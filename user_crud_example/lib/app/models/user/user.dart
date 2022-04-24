@@ -6,18 +6,18 @@ class User {
   User({
     required this.login,
     required this.password,
-    required this.permissionsUserEnum,
+    this.permissionsUserEnum,
   });
 
   final String password;
   final String login;
-  final PermissionsUserEnum permissionsUserEnum;
+  final PermissionsUserEnum? permissionsUserEnum;
 
   Map<String, dynamic> toMap() {
     return {
       'password': password,
       'login': login,
-      'permissionsUserEnum': permissionsUserEnum.name,
+      'permissionsUserEnum': permissionsUserEnum?.name,
     };
   }
 
@@ -25,7 +25,8 @@ class User {
     return User(
       password: map['password'] ?? '',
       login: map['login'] ?? '',
-      permissionsUserEnum: PermissionsUserEnum.values.byName(map['permissionsUserEnum']),
+      permissionsUserEnum: map['permissionsUserEnum'] != null ? 
+        PermissionsUserEnum.values.byName(map['permissionsUserEnum']) : null,
     );
   }
 

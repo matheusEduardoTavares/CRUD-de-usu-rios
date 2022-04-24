@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:user_crud_example/app/controllers/auth/auth_controller.dart';
+import 'package:user_crud_example/app/controllers/signup/signup_controller.dart';
 import 'package:user_crud_example/app/core/local_storage/shared_preferences_local_storage_impl.dart';
 import 'package:user_crud_example/app/core/utils/routes_name.dart';
 import 'package:user_crud_example/app/repositories/user_repository.dart';
@@ -19,6 +20,12 @@ class DefinitionPages {
       ),
     ),
     RoutesName.homePage: (BuildContext _) => const HomePage(),
-    RoutesName.signupPage: (BuildContext _) => const SignupPage(),
+    RoutesName.signupPage: (BuildContext _) => SignupPage(
+      signupController: SignupController(
+        repository: UserRepository(
+          localStorage: SharedPreferencesLocalStorageImpl(),
+        ),
+      ),
+    ),
   };  
 }
