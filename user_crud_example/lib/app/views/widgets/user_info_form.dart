@@ -41,7 +41,6 @@ class UserInfoForm extends StatelessWidget {
               textEditingController: passwordController,
             ),
           ),
-          if (updateDropdownValue != null)
             Padding(
               padding: const EdgeInsets.only(bottom: 10.0),
               child: DropdownButtonFormField<PermissionsUserEnum>(

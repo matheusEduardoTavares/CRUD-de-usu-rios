@@ -18,6 +18,10 @@ class UserRepository {
     await _localStorage.write(UserUtilities.userKey, user.toJson());
   }
 
+  Future<void> delete() async {
+    await _localStorage.clear();
+  }
+
   Future<User?> get() async {
     final userData = await _localStorage.read(UserUtilities.userKey);
 
